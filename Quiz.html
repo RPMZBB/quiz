@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz-Spiel mit Bildern</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz-Spiel</h1>
+        <img id="question-image" src="" alt="Fragebild">
+        <div id="question"></div>
+        <div id="answer-buttons" class="btn-grid">
+            <!-- Antwortbuttons werden hier eingefügt -->
+        </div>
+        <div id="feedback"></div>
+    </div>
+    <script>
+        const questions = [
+            { question: "Was ist die Hauptstadt von Deutschland?", answers: ["Berlin", "München", "Hamburg", "Köln"], correct: "Berlin", image: "images/berlin.jpg" },
+            { question: "Was ist die Hauptstadt von Frankreich?", answers: ["Lyon", "Marseille", "Paris", "Nantes"], correct: "Paris", image: "images/paris.jpg" },
+            { question: "Was ist die Hauptstadt von Italien?", answers: ["Rom", "Mailand", "Neapel", "Turin"], correct: "Rom", image: "images/rome.jpg" }
+        ];
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question').textContent = question.question;
+            document.getElementById('question-image').src = question.image;
+            const buttonsContainer = document.getElementById('answer-buttons');
+            buttonsContainer.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.textContent = answer;
+                button.addEventListener('click', () => checkAnswer(answer));
+                buttonsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(answer) {
+            const question = questions[currentQuestionIndex];
+            if (answer === question.correct) {
+                document.getElementById('feedback').textContent = "Richtig!";
+                document.getElementById('feedback').style.color = 'green';
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    displayQuestion();
+                } else {
+                    document.getElementById('feedback').textContent = "Glückwunsch! Du hast alle Fragen beantwortet.";
+                }
+            } else {
+                document.getElementById('feedback').textContent = "Falsch. Versuche es noch einmal!";
+                document.getElementById('feedback').style.color = 'red';
+            }
+        }
+
+        displayQuestion();
+    </script>
+</body>
+</html>
