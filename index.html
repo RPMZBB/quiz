@@ -2,12 +2,31 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz-Spiel mit Bildern</title>
+    <title>Quiz 1</title>
+    <style>
+	*{margin:10px;}
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+	h1{padding:20px;}
 
+        #question-image {
+			width:100%;
+        }
+		
+	button{
+		display:flex; 
+		width:100%;
+		padding:20px;
+		}
+		#question-image{margin:0; max-height:20%;}
+	#question{font-size:2em;}	
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Quiz-Spiel</h1>
+		<h1>Quiz-Spiel</h1>
         <img id="question-image" src="" alt="Fragebild">
         <div id="question"></div>
         <div id="answer-buttons" class="btn-grid">
@@ -17,7 +36,7 @@
     </div>
     <script>
         const questions = [
-            { question: "Was ist die Hauptstadt von Deutschland?", answers: ["Berlin", "München", "Hamburg", "Köln"], correct: "Berlin", image: "images/berlin.jpg" },
+            { question: "Was ist die Hauptstadt von Deutschland?", answers: ["Berlin", "München", "Hamburg", "Köln"], correct: "Berlin", image: "img/f1.jpg" },
             { question: "Was ist die Hauptstadt von Frankreich?", answers: ["Lyon", "Marseille", "Paris", "Nantes"], correct: "Paris", image: "images/paris.jpg" },
             { question: "Was ist die Hauptstadt von Italien?", answers: ["Rom", "Mailand", "Neapel", "Turin"], correct: "Rom", image: "images/rome.jpg" }
         ];
